@@ -1,0 +1,64 @@
+name: product_showcase
+description: "Product showcase with features list"
+category: product
+
+layout:
+  type: split
+  direction: horizontal
+  padding: 0
+
+layers:
+  - type: background
+    source: solid
+    color: dna.brand.colors.background
+
+  - type: image
+    source: "{input.product_image}"
+    position: left
+    size: ["50%", "100%"]
+
+  - type: text
+    content: "{input.product_name}"
+    font: dna.brand.fonts.heading
+    size: 48
+    color: dna.brand.colors.primary
+    position: right-top
+    margin_top: 100
+    margin_left: 40
+
+  - type: text
+    content: "{input.features}"
+    font: dna.brand.fonts.body
+    size: 24
+    color: dna.brand.colors.text
+    position: below_previous
+    margin_top: 40
+    margin_left: 40
+    max_width: "40%"
+
+  - type: cta_button
+    text: "{input.cta}"
+    background: dna.brand.colors.accent
+    color: "#FFFFFF"
+    position: bottom-right
+    margin_bottom: 60
+    margin_right: 60
+    padding: [16, 32]
+    border_radius: 8
+
+inputs:
+  product_name:
+    type: string
+    required: true
+    example: "Super Widget 3000"
+  product_image:
+    type: string
+    required: true
+    example: "./assets/products/widget.png"
+  features:
+    type: string
+    required: true
+    example: "• Feature 1\n• Feature 2\n• Feature 3"
+  cta:
+    type: string
+    default: "Buy Now"
