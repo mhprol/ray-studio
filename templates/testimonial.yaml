@@ -1,0 +1,46 @@
+name: testimonial
+description: "Customer quote with photo"
+category: social_proof
+
+layout:
+  type: stack
+  direction: vertical
+  padding: 40
+
+layers:
+  - type: background
+    source: ai_generate
+    prompt_template: "Soft blurred background, {dna.brand.tone} style, {dna.brand.colors.background} tones, professional environment"
+
+  - type: text
+    content: "\"{input.quote}\""
+    font: dna.brand.fonts.heading
+    size: 36
+    color: dna.brand.colors.text
+    position: center
+    max_width: "80%"
+    margin_top: 100
+
+  - type: text
+    content: "- {input.author}"
+    font: dna.brand.fonts.body
+    size: 24
+    color: dna.brand.colors.secondary
+    position: below_previous
+    margin_top: 20
+
+  - type: logo
+    source: dna.brand.logo.icon
+    position: bottom-right
+    size: [60, "auto"]
+    margin: 40
+
+inputs:
+  quote:
+    type: string
+    required: true
+    example: "The best service I've ever used."
+  author:
+    type: string
+    required: true
+    example: "Jane Doe"

@@ -1,0 +1,2 @@
+[console_scripts]
+ray-studio = ray_studio.cli:cli

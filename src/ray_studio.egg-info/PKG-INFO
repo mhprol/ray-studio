@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: ray-studio
+Version: 0.1.0
+Summary: AI-powered marketing asset generator
+Author-email: Ray Studio Team <info@raystudio.ai>
+Requires-Python: >=3.9
+Requires-Dist: click>=8.0
+Requires-Dist: pillow>=10.0
+Requires-Dist: pydantic>=2.0
+Requires-Dist: httpx>=0.25
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: python-dotenv>=1.0
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
