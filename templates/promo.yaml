@@ -1,0 +1,59 @@
+name: promo
+description: "Promotional offer with bold CTA"
+category: sales
+
+# Layout definition
+layout:
+  type: stack  # stack, grid, overlay, split
+  direction: vertical
+  padding: 40
+
+layers:
+  - type: background
+    source: ai_generate  # ai_generate, solid, gradient, image
+    prompt_template: "Modern abstract background, {dna.brand.tone} style, {dna.brand.colors.primary} and {dna.brand.colors.secondary} color scheme, minimal, clean"
+
+  - type: logo
+    source: dna.brand.logo.primary
+    position: top-left
+    size: [120, "auto"]
+    margin: 20
+
+  - type: text
+    content: "{input.headline}"
+    font: dna.brand.fonts.heading
+    size: 48
+    color: dna.brand.colors.text
+    position: center
+    max_width: "80%"
+
+  - type: text
+    content: "{input.subheadline}"
+    font: dna.brand.fonts.body
+    size: 24
+    color: dna.brand.colors.secondary
+    position: below_previous
+    margin_top: 16
+
+  - type: cta_button
+    text: "{input.cta}"
+    background: dna.brand.colors.accent
+    color: "#FFFFFF"
+    position: bottom-center
+    padding: [16, 32]
+    border_radius: 8
+    margin_bottom: 40
+
+# Required inputs
+inputs:
+  headline:
+    type: string
+    required: true
+    example: "50% OFF This Week Only"
+  subheadline:
+    type: string
+    required: false
+    example: "Don't miss out on our biggest sale"
+  cta:
+    type: string
+    default: "Shop Now"

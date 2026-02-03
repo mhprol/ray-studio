@@ -1,0 +1,50 @@
+brand:
+  name: "Acme Corp"
+  tagline: "Innovation for Everyone"
+
+  # Visual Identity
+  colors:
+    primary: "#1E40AF"
+    secondary: "#60A5FA"
+    accent: "#F59E0B"
+    background: "#FFFFFF"
+    text: "#1F2937"
+
+  fonts:
+    heading: "Montserrat"
+    body: "Inter"
+    accent: "Playfair Display"
+
+  # Brand Personality
+  tone: "professional"  # professional, playful, bold, elegant, minimal
+  expression: "elegante"  # maps to visual style
+
+  # Assets
+  logo:
+    primary: "./assets/logo.png"
+    white: "./assets/logo-white.png"
+    icon: "./assets/icon.png"
+
+audience:
+  description: "Small business owners aged 30-50"
+  pain_points:
+    - "Not enough time for marketing"
+    - "Can't afford agencies"
+    - "Inconsistent brand presence"
+  desires:
+    - "Professional-looking content"
+    - "Easy to use tools"
+    - "Fast results"
+
+products:
+  - name: "Pro Plan"
+    description: "Everything you need to grow"
+    image: "./assets/products/pro.png"
+    price: "$49/month"
+
+content:
+  hashtags: ["#innovation", "#growth", "#business"]
+  cta_phrases:
+    - "Start Free Trial"
+    - "Learn More"
+    - "Get Started Today"
