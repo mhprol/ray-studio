@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Dict, Any, Optional, Union
 
 class Layout(BaseModel):
@@ -23,8 +23,7 @@ class Layer(BaseModel):
     max_width: Optional[Union[str, int]] = None
     border_radius: Optional[int] = 0
     # Allow extra fields for flexibility
-    class Config:
-        extra = "allow"
+    model_config = ConfigDict(extra="allow")
 
 class InputDefinition(BaseModel):
     type: str
