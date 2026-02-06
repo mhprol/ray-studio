@@ -4,6 +4,7 @@ import os
 import unittest
 import uuid
 from unittest.mock import MagicMock, AsyncMock, patch
+from websockets.connection import State
 
 from ray_studio.figma.client import FigmaClient
 from ray_studio.figma.config import FigmaConfig
@@ -25,16 +26,14 @@ class TestFigma(unittest.IsolatedAsyncioTestCase):
             # Create a class that mimics the websocket protocol
             class MockProtocol:
                 def __init__(self):
-                    self.closed = False
-                    self.open = True
+                    self.state = State.OPEN
                     self.sent = []
 
                 async def send(self, msg):
                     self.sent.append(msg)
 
                 async def close(self):
-                    self.closed = True
-                    self.open = False
+                    self.state = State.CLOSED
 
                 async def __aiter__(self):
                     # Simulate delay before response
@@ -42,7 +41,7 @@ class TestFigma(unittest.IsolatedAsyncioTestCase):
                     yield json.dumps(response_payload)
                     # Keep yielding nothing or sleep to simulate open connection
                     # If we exit, the client loop might treat it as closed connection
-                    while not self.closed:
+                    while self.state != State.CLOSED:
                         await asyncio.sleep(0.1)
 
             mock_ws = MockProtocol()
