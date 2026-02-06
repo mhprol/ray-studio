@@ -59,7 +59,7 @@ class FigmaClient:
         while self.running:
             try:
                 # Reconnect if needed
-                if not self.websocket or self.websocket.closed:
+                if not self.websocket or self.websocket.state.name == 'CLOSED':
                     try:
                         await self._connect_socket()
                     except Exception as e:
@@ -107,7 +107,7 @@ class FigmaClient:
 
         # Wait for connection if not connected (up to timeout)
         start_time = asyncio.get_running_loop().time()
-        while not self.websocket or not self.websocket.open:
+        while not self.websocket or self.websocket.state.name != 'OPEN':
             if asyncio.get_running_loop().time() - start_time > timeout:
                  raise ConnectionError("Timed out waiting for connection")
             await asyncio.sleep(0.1)
