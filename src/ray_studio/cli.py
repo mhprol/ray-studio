@@ -5,6 +5,7 @@ from .templates import get_template, list_templates
 from .generators import get_generator
 from .compositor import Compositor
 from .export import Exporter, PRESETS
+from .figma.cli import figma
 
 @click.group()
 def cli():
@@ -138,3 +139,5 @@ def templates():
 
     for tmpl in list_templates():
         click.echo(f"  • {tmpl.name}: {tmpl.description}")
+
+cli.add_command(figma)
